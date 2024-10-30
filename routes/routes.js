@@ -5,7 +5,8 @@ const {
     login,
     getCurrentUser,
     forgotPassword,
-    resetPassword
+    resetPassword,
+    refresh
 } = require('../controllers/users');
 const {
     getHotels,
@@ -23,6 +24,7 @@ router.post('/login', login);
 router.get('/me', authMiddleware, getCurrentUser);
 router.post('/forgot-password', forgotPassword);
 router.post('/reset-password', resetPassword);
+router.post('/refresh-token', refresh);
 
 // Routes hôtels
 router.get('/hotels', authMiddleware, getHotels);

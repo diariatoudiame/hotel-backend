@@ -106,7 +106,7 @@ const login = async (req, res) => {
                 email: user.email
             },
             process.env.JWT_SECRET,  // Utilisation de la variable d'environnement
-            { expiresIn: '1h' }
+            { expiresIn: '2h' }
         );
 
         res.status(200).json({
@@ -120,6 +120,22 @@ const login = async (req, res) => {
         res.status(500).json({ msg: error.message });
     }
 };
+
+const refresh = async (req, res) => {
+    try {
+        const { userId } = req.body;
+
+        const newAccessToken = jwt.sign(
+            { userId },
+            process.env.JWT_SECRET,
+            { expiresIn: '1h' }
+        );
+
+        res.json({ accessToken: newAccessToken });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
 const getCurrentUser = async (req, res) => {
     try {
         const user = await User.findById(req.user).select('-password');
@@ -130,9 +146,10 @@ const getCurrentUser = async (req, res) => {
     } catch (error) {
         res.status(500).json({ msg: 'Server Error' });
     }
-};
-console.log('Email User:', process.env.EMAIL_USER);
-console.log('Email Password:', process.env.EMAIL_PASSWORD);
+}
+
+// console.log('Email User:', process.env.EMAIL_USER);
+// console.log('Email Password:', process.env.EMAIL_PASSWORD);
 
 
 // Configuration du transporteur d'email pour Gmail
@@ -289,4 +306,4 @@ const resetPassword = async (req, res) => {
 };
 
 
-module.exports = { register, login, getCurrentUser, forgotPassword, resetPassword };
+module.exports = { register, login, getCurrentUser, forgotPassword, resetPassword, refresh };
