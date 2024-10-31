@@ -10,7 +10,7 @@ require('dotenv').config()
 
 // Ajoutez la configuration CORS avant les autres middlewares
 app.use(cors({
-    origin: ['https://hotel-frontend-oqpx.vercel.app', 'http://localhost:3000'],// L'URL de votre frontend Next.js
+    origin: ['https://hotel-frontend-2e3m.vercel.app/', 'http://localhost:3000'],// L'URL de votre frontend Next.js
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS']
 }))
