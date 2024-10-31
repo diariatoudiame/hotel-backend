@@ -38,7 +38,13 @@ const HotelSchema = new mongoose.Schema({
             type: String,
             required: true
         }
-    }
+    },
+    // Référence à l'utilisateur qui a créé l'hôtel
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: [true, "L'ID de l'utilisateur est requis"]
+    },
 }, { timestamps: true });
 
 module.exports = mongoose.model('Hotel', HotelSchema);
