@@ -10,7 +10,6 @@ const {
 } = require('../controllers/users');
 const {
     getHotels,
-    getHotel,
     createHotel,
     updateHotel,
     deleteHotel
@@ -28,7 +27,6 @@ router.post('/refresh-token', refresh);
 
 // Routes hôtels
 router.get('/hotels', authMiddleware, getHotels);
-router.get('/hotel/:hotelID', authMiddleware, getHotel);
 router.post('/hotels', authMiddleware, uploadHotelPhotos, createHotel);
 router.put('/hotels/:hotelID', authMiddleware, uploadHotelPhotos, updateHotel);
 router.delete('/hotels/:hotelID', authMiddleware, deleteHotel);

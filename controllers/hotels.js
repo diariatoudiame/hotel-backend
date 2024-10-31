@@ -109,6 +109,7 @@ const createHotel = async (req, res) => {
     }
 };
 
+
 // Pour mettre à jour un hôtel
 const updateHotel = async (req, res) => {
     try {
@@ -165,6 +166,7 @@ const deleteHotel = async (req, res) => {
         });
     }
 };
+
 
 module.exports = {
     getHotels,
