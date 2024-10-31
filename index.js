@@ -51,7 +51,7 @@ require('dotenv').config()
 
 // Définir les origines autorisées
 const allowedOrigins = [
-    'https://hotel-frontend-2e3m.vercel.app',  // Retirez le slash à la fin
+    'https://hotel-frontend-x8ro.vercel.app/',  // Retirez le slash à la fin
     'http://localhost:3000'
 ];
 
